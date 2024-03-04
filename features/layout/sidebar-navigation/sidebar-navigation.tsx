@@ -20,6 +20,19 @@ export function SidebarNavigation() {
   const router = useRouter();
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const menuButtons = [
+    {
+      text: "Support",
+      iconSrc: "/icons/support.svg",
+      onClick: () => alert("Support"),
+    },
+    {
+      text: "Collapse",
+      iconSrc: "/icons/arrow-left.svg",
+      onClick: () => toggleSidebar(),
+    },
+  ];
   return (
     <div
       className={classNames(
@@ -79,19 +92,21 @@ export function SidebarNavigation() {
             ))}
           </ul>
           <ul className={styles.list}>
-            <MenuItemButton
-              text="Support"
-              iconSrc="/icons/support.svg"
-              isCollapsed={isSidebarCollapsed}
-              onClick={() => alert("Support")}
-            />
-            <MenuItemButton
-              text="Collapse"
-              iconSrc="/icons/arrow-left.svg"
-              isCollapsed={isSidebarCollapsed}
-              onClick={() => toggleSidebar()}
-              className={styles.collapseMenuItem}
-            />
+            {menuButtons.map((menuButton, index) => (
+              <MenuItemButton
+                key={index}
+                text={menuButton.text}
+                iconSrc={menuButton.iconSrc}
+                onClick={menuButton.onClick}
+                isCollapsed={isSidebarCollapsed}
+                className={classNames(
+                  styles.collapseMenuItem,
+                  index === menuButtons.length - 1 && isSidebarCollapsed
+                    ? styles.collapseArrowItem
+                    : "",
+                )}
+              />
+            ))}
           </ul>
         </nav>
       </div>
