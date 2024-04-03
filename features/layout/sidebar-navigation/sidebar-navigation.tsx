@@ -14,7 +14,6 @@ const menuItems = [
   { text: "Alerts", iconSrc: "/icons/alert.svg", href: Routes.alerts },
   { text: "Users", iconSrc: "/icons/users.svg", href: Routes.users },
   { text: "Settings", iconSrc: "/icons/settings.svg", href: Routes.settings },
-  // { tex: "Support", iconSrc: "/icons/support.svg", href: "mailto:" },
 ];
 
 export function SidebarNavigation() {
@@ -22,18 +21,6 @@ export function SidebarNavigation() {
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // const menuButtons = [
-  //   {
-  //     text: "Support",
-  //     iconSrc: "/icons/support.svg",
-  //     onClick: () => alert("Support"),
-  //   },
-  //   {
-  //     text: "Collapse",
-  //     iconSrc: "/icons/arrow-left.svg",
-  //     onClick: () => toggleSidebar(),
-  //   },
-  // ];
   return (
     <div
       className={classNames(
