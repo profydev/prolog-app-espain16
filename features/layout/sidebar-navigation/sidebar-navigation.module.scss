@@ -138,8 +138,8 @@
   @media (min-width: breakpoint.$desktop) {
     display: flex;
   }
-}
 
-.collapseArrowItem:last-of-type {
-  transform: rotate(180deg);
+  &.isCollapsed {
+    transform: rotate(180deg);
+  }
 }
