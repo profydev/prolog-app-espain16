@@ -21,18 +21,6 @@ export function SidebarNavigation() {
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const menuButtons = [
-    {
-      text: "Support",
-      iconSrc: "/icons/support.svg",
-      onClick: () => alert("Support"),
-    },
-    {
-      text: "Collapse",
-      iconSrc: "/icons/arrow-left.svg",
-      onClick: () => toggleSidebar(),
-    },
-  ];
   return (
     <div
       className={classNames(
@@ -92,21 +80,24 @@ export function SidebarNavigation() {
             ))}
           </ul>
           <ul className={styles.list}>
-            {menuButtons.map((menuButton, index) => (
-              <MenuItemButton
-                key={index}
-                text={menuButton.text}
-                iconSrc={menuButton.iconSrc}
-                onClick={menuButton.onClick}
-                isCollapsed={isSidebarCollapsed}
-                className={classNames(
-                  styles.collapseMenuItem,
-                  index === menuButtons.length - 1 && isSidebarCollapsed
-                    ? styles.collapseArrowItem
-                    : "",
-                )}
-              />
-            ))}
+            <MenuItemLink
+              text="Support"
+              iconSrc="/icons/support.svg"
+              href="mailto:support@prolog-app.com?subject=%20Support%20Request%3A"
+              isCollapsed={isSidebarCollapsed}
+              className={styles.collapseMenuItem}
+              isActive={false}
+            />
+            <MenuItemButton
+              text="Collapse"
+              iconSrc="/icons/arrow-left.svg"
+              isCollapsed={isSidebarCollapsed}
+              onClick={() => toggleSidebar()}
+              className={classNames(
+                styles.collapseMenuItem,
+                isSidebarCollapsed && styles.isCollapsed,
+              )}
+            />
           </ul>
         </nav>
       </div>

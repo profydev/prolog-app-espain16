@@ -4,6 +4,7 @@ import classNames from "classnames";
 import styles from "./menu-item-link.module.scss";
 
 type MenuItemProps = {
+  className?: string;
   text: string;
   iconSrc: string;
   href: string;
