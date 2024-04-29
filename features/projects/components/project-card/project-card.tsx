@@ -20,7 +20,7 @@ const statusColors = {
   [ProjectStatus.warning]: BadgeColor.warning,
   [ProjectStatus.error]: BadgeColor.error,
 };
-const projectStatusToText = {
+const statusText = {
   [ProjectStatus.info]: "Stable",
   [ProjectStatus.warning]: "Warning",
   [ProjectStatus.error]: "Critical",
@@ -53,9 +53,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <div className={styles.issuesNumber}>{numEvents24h}</div>
           </div>
           <div className={styles.status}>
-            <Badge color={statusColors[status]}>
-              {projectStatusToText[status]}
-            </Badge>
+            <Badge color={statusColors[status]}>{statusText[status]}</Badge>
           </div>
         </div>
       </div>
